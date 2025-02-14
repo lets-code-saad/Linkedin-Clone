@@ -1,0 +1,15 @@
+.homePage{
+    background-color: #F3F2F0!important;
+}
+.leftProfile {
+    min-height: 425px;
+    background-color: white !important;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .followBtn:hover{
+    background-color: #F3F3F3;
+    border: 1px solid black!important;
+    cursor: pointer;
+  }

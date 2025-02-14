@@ -1,0 +1,14 @@
+  .text-blue {
+      color: #378FE9 !important;
+  }
+
+  .text-green {
+      color: #5F9B41 !important;
+  }
+
+  .text-orange {
+      color: #E06847 !important;
+  }
+  .postInput:hover{
+    cursor: "pointer"!important;
+  }

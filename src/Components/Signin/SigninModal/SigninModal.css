@@ -1,0 +1,27 @@
+.signinModal{
+    background: white!important;
+    width: 350px;
+    height:auto;
+}
+.rememberChk{
+    width: 20px;
+}
+.fs-12{
+    font-size: 12px;
+}
+
+.text-decoration-none{
+    text-decoration: none!important;
+}
+.btn-bg-website{
+    background-color: #0A66C2!important;
+}
+
+#rememberChk:checked{
+    background-color: green!important;
+    color: green!important;
+    border-color: green!important;
+}
+#rememberChk:hover{
+cursor:pointer;
+}
