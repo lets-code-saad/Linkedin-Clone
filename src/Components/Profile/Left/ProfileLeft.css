@@ -1,0 +1,19 @@
+.profilePagePhoto img {
+    width: 140px;
+    /* Ensure width and height are equal */
+    height: 140px;
+    object-fit: cover;
+    /* Prevents image distortion */
+    border-radius: 50%;
+}
+.coverPagePhoto {
+    width: 100%;
+    /* Ensure the div takes full width */
+}
+.coverPagePhoto img {
+    width: 100%;
+    /* Ensures full width */
+    height: 200px;
+    object-fit: cover;
+    /* Ensures the image covers the full area */
+}

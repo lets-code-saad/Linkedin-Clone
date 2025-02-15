@@ -22,7 +22,7 @@ const RightHome = () => {
     }
 
     return (
-        <div className=''>
+        <div className='rightHome'>
 
             {/* SIDE BAR GAMES VIEW */}
             <Box sx={{ backgroundColor: "white", height: "250px" }} className="border rounded-3 p-2">

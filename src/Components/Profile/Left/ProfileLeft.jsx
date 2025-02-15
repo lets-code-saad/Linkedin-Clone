@@ -1,23 +1,67 @@
 import { Box, Button, Typography } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setSelectedImg } from '../../Store/Slices/selectedContent'
+import "./ProfileLeft.css"
 
 const ProfileLeft = () => {
+// MANAGIN THE DYNAMIC IMAGE CHANGE
+    const [selectedProfileImg, setselectedProfileImg] = useState("")
+    const [selectedCoverImg, setselectedCoverImg] = useState("")
+
+    const dispatch = useDispatch()
+    const handleProfileImg = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+        const profileImgUrl = URL.createObjectURL(file)
+            setselectedProfileImg(profileImgUrl)
+}
+    }
+    const handleCoverImg = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+        const coverImgUrl = URL.createObjectURL(file)
+            setselectedCoverImg(coverImgUrl)
+}
+    }
+    
+
     return (
         <div>
             {/* SIDEBAR PROFILE VIEW */}
             <Box sx={{ backgroundColor: "white", position: "relative" }} className="leftProfilePage border rounded-3">
 
                 {/* COVER PHOTO */}
-                <Box className="coverPhoto">
-                    <img className='img-fluid border-0 rounded-top-2'
+                <Box className="coverPagePhoto">
+                    <input type="file"
+                        onChange={handleCoverImg}
+                        style={{ display: "none" }}
+                        accept='image/*'
+                        id='coverImgUpdate'
+                    />
+                    <label className='w-100' htmlFor="coverImgUpdate">
+                    <img className='border-0 rounded-top-2 cp'
                         style={{ width: "100%", height: "200px", objectFit: "cover" }}
-                        src="/imgs/User/Linkedin Cover Photo Design.png" alt="Cover" />
+                        src={selectedCoverImg ? selectedCoverImg : `/imgs/User/Linkedin Cover Photo Design.png`} alt="Cover" />
+                        </label>
                 </Box>
 
                 {/* PROFILE PHOTO */}
                 <Box sx={{ padding: "20px", position: "absolute", bottom: "35px" }}>
-                    <Box className="profilePhoto">
-                        <img className='border border-2 border-white rounded-pill' width={140} src="/imgs/User/Profile picture.jpg" alt="Profile" />
+                    <Box className="profilePagePhoto">
+                        <input type="file"
+                            onChange={handleProfileImg}
+                            style={{display:"none"}}
+                            accept='image*/'
+                        id='profileImgUpdate'
+                        />
+                        <label htmlFor="profileImgUpdate">
+                            <img
+                                className='img-fluid border border-2 border-white rounded-pill cp'
+                                width={140}
+                                src={selectedProfileImg ? selectedProfileImg : `/imgs/User/Profile picture.jpg`}
+                                alt="Profile" />
+                        </label>
                     </Box>
 
                     {/* NAME & EDIT ICON */}

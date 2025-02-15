@@ -5,7 +5,7 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import AddIcon from '@mui/icons-material/Add';
 import { useDispatch, useSelector } from "react-redux";
 import { clearPostContent, clearSelectedImg, setPostContent, setSelectedImg, addPosts } from "../../../../../Store/Slices/selectedContent";
-
+import "./CSS/Home.css"
 
 const PostModal = ({ open, handleClose }) => {
     // const [postContent, setPostContent] = useState("");
@@ -41,7 +41,7 @@ dispatch(addPosts())
             dispatch(clearSelectedImg())
             handleClose()
         }} aria-labelledby="modal-title">
-            <Box
+            <Box className="modalPost"
                 sx={{
                     position: "absolute",
                     top: "50%",

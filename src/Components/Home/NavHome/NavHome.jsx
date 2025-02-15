@@ -8,6 +8,7 @@ import SmsIcon from '@mui/icons-material/Sms';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AppsIcon from '@mui/icons-material/Apps';
 import CrisisAlertIcon from '@mui/icons-material/CrisisAlert';
+import { Link } from 'react-router-dom';
 
 const NavHome = () => {
   return (
@@ -39,10 +40,12 @@ const NavHome = () => {
 
         {/* ICONS */}
         <Box sx={{ color: "#666666" }} className="d-flex align-items-center gap-3">
-          <Box sx={{cursor:"pointer", ":hover":{color:"#191919!important", animation:"color 990ms ease"}, padding:"6px"}} className="d-flex flex-column align-items-center text-center">
+            <Link to="/home" className='text-decoration-none text-black'>
+            <Box sx={{ cursor: "pointer", ":hover": { color: "#191919!important", animation: "color 990ms ease" }, padding: "6px" }} className="d-flex flex-column align-items-center text-center">
             <HomeIcon sx={{ fontSize: "25px" }} />
             <small>Home</small>
           </Box>
+            </Link>
 
           <Box sx={{cursor:"pointer", ":hover":{color:"#191919!important", animation:"color 990ms ease"}, padding:"6px"}} className="d-flex flex-column align-items-center text-center">
             <PeopleIcon sx={{ fontSize: "25px" }} />

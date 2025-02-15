@@ -38,7 +38,7 @@ const dispatch = useDispatch()
             <Box className="bg-white border rounded-3 p-3 w-100" sx={{ position: "relative" }}>
                 {/* Post Header */}
                 <Box sx={{ display: 'flex', alignItems: "center", justifyContent: "space-between" }}>
-                                <Link className='text-decoration-none text-black' to="profile">
+                                <Link className='text-decoration-none text-black' to="/profile">
                     <Box className="post-info" sx={{ display: 'flex', alignItems: "center", gap: "10px" }}>
                         <Box>
                             <img width={50} src="/imgs/User/Profile picture.jpg" alt="" />

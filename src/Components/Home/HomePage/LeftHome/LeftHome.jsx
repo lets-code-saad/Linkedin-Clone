@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 
 const LeftHome = () => {
   return (
-    <div className=''>
+    <div className='leftHome'>
       {/* SIDEBAR PROFILE VIEW */}
       <Box sx={{backgroundColor:"white", position:"relative"}} className="leftProfile border-0 rounded-3">
       {/* COVER PHOTO */}
@@ -20,14 +20,14 @@ const LeftHome = () => {
         <img className='img-fluid border-0 rounded-top-2' src="/imgs/User/Linkedin Cover Photo Design.png" alt="" />
         </Box>
       {/* PROFILE PHOTO */}
-        <Link to="profile">
+        <Link to="/profile">
         <Box className="profilePhoto" sx={{ position: "absolute", top: "25px", right: "75px" }} >
         <img className='border border-1 border-black rounded-pill' width={80} src="/imgs/User/Profile picture.jpg" alt="" />
         </Box>
         </Link>
         {/* NAME */}
       <Box className="text-center" sx={{position:"absolute", top:"120px", right:"0px", padding:"0 10px"}}>
-        <Link className='text-decoration-none' to="profile">
+        <Link className='text-decoration-none' to="/profile">
         <h6 className="text-decoration-none text-black">Muhammad Saad</h6>
           <Typography sx={{ fontSize: "12px", fontWeight: "semibold", color: "#666666" }}>Frontend Web Developer | HTML | CSS | Javascript | Bootstrap | ReactJs</Typography>
         </Link>

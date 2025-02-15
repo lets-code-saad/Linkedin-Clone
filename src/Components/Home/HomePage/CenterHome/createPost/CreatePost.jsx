@@ -12,7 +12,7 @@ const CreatePost = () => {
     <div>
       <Box className="bg-white border rounded-3 p-3 w-100">
         <Box className="" sx={{ width: "100%", display: 'flex', alignItems: "center", gap: "7px" }}>
-          <Link className='text-decoration-none' to="profile">
+          <Link className='text-decoration-none' to="/profile">
           <img width={40} src="/imgs/User/Profile picture.jpg" alt="" />
           </Link>
           <OutlinedInput

@@ -1,5 +1,6 @@
 import { Box, Button, Divider, Typography } from '@mui/material'
 import React, { useState } from 'react'
+import "./ProfileRight.css"
 
 const ProfileRight = () => {
 
@@ -7,7 +8,7 @@ const ProfileRight = () => {
     const [profileURL, setProfileURL] = useState("www.linkedin.com/in/saad48")
 
     return (
-        <div className=''>
+        <div className='profilePageRight'>
 
             {/* SIDE BAR PROFILE LINKS & LANGUAGE */}
             <Box sx={{ backgroundColor: "white", height: "auto" }} className="border rounded-3 p-3">
