@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import React from 'react';
-import "./LIke.css";
+import "./Like.css";
 
 const Like = ({ postId, selectedReactions, setSelectedReactions, hovered, setHoveredPost }) => {
     // Reactions array
@@ -16,7 +16,7 @@ const Like = ({ postId, selectedReactions, setSelectedReactions, hovered, setHov
     return (
         <>
             {/* Hover Icons */}
-            {hovered === postId && (
+            {hovered===postId && (
                 <Box
                     sx={{
                         position: "absolute",
@@ -24,11 +24,12 @@ const Like = ({ postId, selectedReactions, setSelectedReactions, hovered, setHov
                         backgroundColor: "white",
                         height: "50px",
                         paddingX: "10px",
-                        boxShadow: "10px 10px 0 0"
+                        boxShadow: "10px 10px 0 0",
+                        zIndex: 100,
                     }}
                     className="d-flex border-0 rounded-pill shadow-sm align-items-center gap-2"
-                    onMouseEnter={() => setHoveredPost(postId)}
-                    onMouseLeave={() => setHoveredPost(null)}
+                    onMouseEnter={() => setTimeout(() => setHoveredPost(postId),17000)}
+                    onMouseLeave={() => setTimeout(() => setHoveredPost(null),19000)}
                 >
                     {reactions.map((reaction, index) => (
                         <iconify-icon

@@ -22,7 +22,7 @@ const UpdatedPost = ({ post }) => {
     const incrementInPost = () => setRepost(repost + 1);
     const toggleCommentBox = () => setShowCommentBox(!showCommentBox);
 
-const dispatch = useDispatch()
+    const dispatch = useDispatch()
 
     const handleReactionSelect = (postId, reaction) => {
         setSelectedReactions((prevReactions) => ({
@@ -31,33 +31,40 @@ const dispatch = useDispatch()
         }));
     };
 
+    const { selectedImg, selectedText, posts } = useSelector((state) => state.selectedContent)
 
+    // FUNCTIONT O MANAGET THE HOVER ICONS
+    const handleMouseLeave = () => {
+        setTimeout(() => {
+            setHoveredPost(null);
+        }, 300); // 300ms delay before hiding
+    };
 
     return (
         <div>
-            <Box className="bg-white border rounded-3 p-3 w-100" sx={{ position: "relative" }}>
+            <Box className="bg-white border rounded-3 p-3 w-100" sx={{ position: "relative" }} >
                 {/* Post Header */}
-                <Box sx={{ display: 'flex', alignItems: "center", justifyContent: "space-between" }}>
-                                <Link className='text-decoration-none text-black' to="/profile">
-                    <Box className="post-info" sx={{ display: 'flex', alignItems: "center", gap: "10px" }}>
-                        <Box>
-                            <img width={50} src="/imgs/User/Profile picture.jpg" alt="" />
-                        </Box>
-                        <Box className="mt-2">
-                            <h6 className='fs-7'>Muhammad Saad</h6>
-                            <Typography sx={{ fontSize: "12px", marginTop: "-6px", color: "#666666" }}>
-                                Frontend Web Developer | HTML | CSS | ReactJs
-                            </Typography>
-                            <Typography sx={{ fontSize: "12px", color: "#666666" }}>
-                                1w <PublicIcon sx={{ fontSize: "15px", cursor: "pointer" }} />
-                            </Typography>
+                <Box sx={{ display: 'flex', alignItems: "center", justifyContent: "space-between"}}>
+                    <Link className='text-decoration-none text-black' to="/profile">
+                        <Box className="post-info" sx={{ display: 'flex', alignItems: "center", gap: "10px" }}>
+                            <Box>
+                                <img width={50} src="/imgs/User/Profile picture.jpg" alt="" />
                             </Box>
-                    </Box>
-                        </Link>
-                    
+                            <Box className="mt-2">
+                                <h6 className='fs-7'>Muhammad Saad</h6>
+                                <Typography sx={{ fontSize: "12px", marginTop: "-6px", color: "#666666" }}>
+                                    Frontend Web Developer | HTML | CSS | ReactJs
+                                </Typography>
+                                <Typography sx={{ fontSize: "12px", color: "#666666" }}>
+                                    1w <PublicIcon sx={{ fontSize: "15px", cursor: "pointer" }} />
+                                </Typography>
+                            </Box>
+                        </Box>
+                    </Link>
+
                     {/* OPTIONS AND CLOSE ICON */}
                     <Box className="post-opts" sx={{ display: 'flex', alignItems: "center", gap: "15px" }}>
-                        <MoreHorizIcon sx={{ fontSize: "18px",cursor:"pointer" }} />
+                        <MoreHorizIcon sx={{ fontSize: "18px", cursor: "pointer" }} />
                         <CloseIcon
                             onClick={() => dispatch(deletePost(post.id))}
                             sx={{ fontSize: "18px", cursor: "pointer" }} />
@@ -68,7 +75,7 @@ const dispatch = useDispatch()
                 <Box className="mt-2">
                     <Typography component="p" sx={{ display: "inline" }}>
                         {post?.content.length > 100
-                            ? (expanded ? post?.content : `${post?.content.slice(0, 100)}... `)
+                            ? (expanded ? post?.content : `${post?.content?.slice(0, 100)}... `)
                             : post?.content}
                     </Typography>
                     {post?.content.length > 100 && (
@@ -92,15 +99,15 @@ const dispatch = useDispatch()
                 {/* Reactions and Comments Count */}
                 <Box className="d-flex align-items-center justify-content-between mt-3">
                     <Box className="d-flex align-items-center gap-1">
-                        {selectedReactions[post.id] && (
+                        {selectedReactions[post?.id] && (
                             <>
                                 <iconify-icon
                                     style={{
-                                        color: selectedReactions[post.id]?.color || "#666666",
-                                        backgroundColor: selectedReactions[post.id]?.bg || "transparent",
+                                        color: selectedReactions[post?.id]?.color || "#666666",
+                                        backgroundColor: selectedReactions[post?.id]?.bg || "transparent",
                                     }}
                                     className='reaction_icons border-0 rounded-pill p-1'
-                                    icon={selectedReactions[post.id]?.icon || "clarity:thumbs-up-line"}
+                                    icon={selectedReactions[post?.id]?.icon || "clarity:thumbs-up-line"}
                                     width="15"
                                     height="15"
                                 ></iconify-icon>
@@ -121,7 +128,7 @@ const dispatch = useDispatch()
                 <Box className="action-icons mt-2 d-flex align-items-center justify-content-between">
                     <Box
                         onMouseEnter={() => setHoveredPost(post.id)}
-                        onMouseLeave={() => setHoveredPost(null)} // Removed setTimeout
+                        onMouseLeave={handleMouseLeave} // Removed setTimeout
                         sx={{ position: "relative", padding: "10px", ":hover": { cursor: "pointer", backgroundColor: "#EBEBEB" } }}
                         className="d-flex align-items-center gap-1 fw-medium"
                     >
@@ -156,24 +163,33 @@ const dispatch = useDispatch()
 
                 {/* Hover Icons */}
                 {hoveredPost === post.id && (
-                    <Box sx={{ position: "absolute", bottom: "160px", left: "0", backgroundColor: "white", padding: "5px", borderRadius: "8px", boxShadow: "0 2px 10px rgba(0,0,0,0.1)" }}>
+                    <Box sx={{
+                        position: "absolute",
+                        bottom: "160px",
+                        left: "0",
+                        backgroundColor: "white",
+                        padding: "5px",
+                        borderRadius: "8px",
+                        boxShadow: "0 2px 10px rgba(0,0,0,0.1)"
+                    }}>
                         <Like
-                            postId={post.id}
+                            postId={posts.id}
                             selectedReactions={selectedReactions}
                             handleReactionSelect={handleReactionSelect}
                             setHoveredPost={setHoveredPost}
                             setSelectedReactions={setSelectedReactions}
+
                         />
                     </Box>
                 )}
-            {/* Comment Functionality */}
-            <Comment
-                toggleCommentBox={toggleCommentBox}
-                comment={comment}
-                setComment={setComment}
-                comments={comments}
-                setComments={setComments}
-                showCommentBox={showCommentBox} />
+                {/* Comment Functionality */}
+                <Comment
+                    toggleCommentBox={toggleCommentBox}
+                    comment={comment}
+                    setComment={setComment}
+                    comments={comments}
+                    setComments={setComments}
+                    showCommentBox={showCommentBox} />
             </Box>
 
         </div>

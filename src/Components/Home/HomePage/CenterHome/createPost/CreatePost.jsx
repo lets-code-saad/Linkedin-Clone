@@ -3,10 +3,18 @@ import React, { useState } from 'react'
 import "./CreatePost.css"
 import ModalPost from './modalPost/ModalPost'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { setPostModal } from '../../../../Store/Slices/modalSlice'
+
 
 const CreatePost = () => {
 
-  const [open, setOpen] = useState(false);
+  // IMPORTING DISPATCH FOR REACT-REDUX-TOOLKIT
+const dispatch = useDispatch()
+
+  // MANAGING THE MODAL OPEN AND CLOSE GLOBALLY
+  const { openPostModal } = useSelector((state)=> state.modalSlice)
+  // const [open, setOpen] = useState(false);
 
   return (
     <div>
@@ -16,7 +24,7 @@ const CreatePost = () => {
           <img width={40} src="/imgs/User/Profile picture.jpg" alt="" />
           </Link>
           <OutlinedInput
-            onClick={()=> setOpen(true)}
+            onClick={()=> dispatch(setPostModal(true))}
             readOnly
             sx={{
               "& .MuiOutlinedInput-root": {
@@ -66,7 +74,7 @@ const CreatePost = () => {
           </Button>
         </Box>
       </Box>
-      <ModalPost open={open} handleClose={() => setOpen(false)} />
+      <ModalPost open={openPostModal} handleClose={() => dispatch(setPostModal(false))} />
     </div>
   )
 }

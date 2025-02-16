@@ -6,15 +6,16 @@ import AddIcon from '@mui/icons-material/Add';
 import { useDispatch, useSelector } from "react-redux";
 import { clearPostContent, clearSelectedImg, setPostContent, setSelectedImg, addPosts } from "../../../../../Store/Slices/selectedContent";
 import "./CSS/Home.css"
+import { setPostModal } from "../../../../../Store/Slices/modalSlice";
 
-const PostModal = ({ open, handleClose }) => {
-    // const [postContent, setPostContent] = useState("");
+const PostModal = () => {
 
     // CREATING STATE FOR IMAGE AND TEXT SELECTION FOR POST
-    // const [selectedImg, setSelectedImg] = useState(null)
-
     const { selectedImg, postContent} = useSelector((state) => state.selectedContent)
     const dispatch = useDispatch()
+
+  // MANAGING THE MODAL OPEN AND CLOSE GLOBALLY
+  const { openPostModal } = useSelector((state)=> state.modalSlice)
 
     // Handling image selection
     const handleImageChange = (e) => {
@@ -30,16 +31,16 @@ const PostModal = ({ open, handleClose }) => {
 dispatch(addPosts())
         dispatch(clearPostContent())
         dispatch(clearSelectedImg())
-        handleClose();
+        dispatch(setPostModal(false));
     };
 
 
 
     return (
-        <Modal open={open} onClose={() => {
+        <Modal open={openPostModal} onClose={() => {
             dispatch(clearPostContent())
             dispatch(clearSelectedImg())
-            handleClose()
+            dispatch(setPostModal())
         }} aria-labelledby="modal-title">
             <Box className="modalPost"
                 sx={{
@@ -67,7 +68,7 @@ dispatch(addPosts())
                             <Typography sx={{ fontSize: "13px", marginTop: "-7px", color: "#666666" }}>Post To Anyone</Typography>
                         </Box>
                     </Box>
-                    <IconButton onClick={handleClose}>
+                    <IconButton onClick={()=> dispatch(setPostModal(false))}>
                         <CloseIcon />
                     </IconButton>
                 </Box>

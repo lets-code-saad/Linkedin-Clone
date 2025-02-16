@@ -1,0 +1,25 @@
+@media (max-width: 600px) {
+  .leftHome {
+    display: none;
+    /* Show element */
+  }
+  .rightHome {
+    display: none;
+    /* Show element */
+  }
+  .modalContact{
+    width:400px!important;
+  }
+}
+
+@media (min-width: 601px) {
+  .rightHome {
+    display: block;
+    /* Hide on larger screens */
+  }
+  .leftHome {
+    display: block;
+    /* Hide on larger screens */
+  }
+}
+

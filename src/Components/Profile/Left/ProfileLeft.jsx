@@ -1,15 +1,19 @@
 import { Box, Button, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setSelectedImg } from '../../Store/Slices/selectedContent'
 import "./ProfileLeft.css"
+import { setContactModal } from '../../Store/Slices/modalSlice'
+import ContactModal from './modalContact/ContactModal'
 
 const ProfileLeft = () => {
 // MANAGIN THE DYNAMIC IMAGE CHANGE
     const [selectedProfileImg, setselectedProfileImg] = useState("")
     const [selectedCoverImg, setselectedCoverImg] = useState("")
 
+    const { openContactModal } = useSelector((state) => state.modalSlice)
     const dispatch = useDispatch()
+
+
     const handleProfileImg = (e) => {
         const file = e.target.files[0];
         if (file) {
@@ -92,7 +96,19 @@ const ProfileLeft = () => {
                     {/* LOCATION & CONTACT INFO */}
                     <Typography sx={{ fontSize: "13px", display: "inline", gap: "15px", fontWeight: "semibold", color: "#666666" }}>
                         Layyah, Punjab Pakistan
-                        <Button size='small' sx={{ ":hover": { backgroundColor: "#D0E8FF", borderRadius: "13px" }, fontSize: "13px" }} className='text-website cp text-capitalize fw-semibold'>Contact Info</Button>
+                    
+                        {/* CONTACT INFO MODAL BUTTON */}
+
+                        <Button
+                            onClick={()=> dispatch(setContactModal(true))}
+                            size='small'
+                            sx={{
+                                ":hover":
+                                {
+                                    backgroundColor: "#D0E8FF",
+                                    borderRadius: "13px"
+                                }, fontSize: "13px"
+                            }} className='text-website cp text-capitalize fw-semibold'>Contact Info</Button>
                     </Typography>
                     <Typography sx={{ fontSize: "13px" }} className='text-website cp text-capitalize fw-semibold'>500+ Connections</Typography>
 
@@ -131,6 +147,7 @@ const ProfileLeft = () => {
                             Add Profile Section
                         </Button>
                     </Box>
+                    <ContactModal open={openContactModal} handleClose={()=> dispatch(setContactModal(false))} />
                 </Box>
             </Box>
         </div>

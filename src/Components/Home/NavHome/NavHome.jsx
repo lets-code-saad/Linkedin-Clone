@@ -66,12 +66,12 @@ const NavHome = () => {
             <NotificationsIcon sx={{ fontSize: "25px" }} />
             <small>Notifications</small>
           </Box>
-
+            <Link className='text-decoration-none text-black' to="/profile">
             <Box sx={{ cursor: "pointer", ":hover": { color: "#191919!important", animation: "color 0.3s ease-in-out" }, padding: "6px" }} className="d-flex flex-column align-items-center text-center">
             <img width={25} src="/imgs/User/Profile picture png.png" alt="" />
             <small className='d-flex align-items-center'>Me<iconify-icon icon="ri:arrow-down-s-fill" width={15} className="fs-2 cp"></iconify-icon></small>
           </Box>
-
+</Link>
           <Divider orientation="vertical" variant="middle" flexItem />
 
             <Box sx={{ cursor: "pointer", ":hover": { color: "#191919!important", animation: "color 0.3s ease-in-out" }, padding: "6px" }} className="d-flex flex-column align-items-center text-center">

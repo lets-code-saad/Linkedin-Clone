@@ -118,7 +118,7 @@ const Post = () => {
                 <Divider className='mt-2' component="" variant='fullWidth' />
                 <Box className="action-icons mt-2 d-flex align-items-center justify-content-between">
                     <Box
-                        onMouseEnter={() => setHovered(true)}
+                        onMouseEnter={() => setTimeout(() => setHovered(true), 5000)}
                         onMouseLeave={() => setTimeout(() => setHovered(false), 5000)} // Delays closing the icons
                         sx={{ padding: "10px", ":hover": { cursor: "pointer", backgroundColor: "#EBEBEB" } }} className="d-flex align-items-center gap-1 fw-medium">
                         <iconify-icon style={{
@@ -143,6 +143,7 @@ const Post = () => {
                 </Box>
                 {/* DISPLAYING THE HOVER ICONS */}
                 <Like
+                    postId={posts.id}
                     selectedReaction={selectedReaction}
                     setSelectedReaction={setSelectedReaction}
                     hovered={hovered}
