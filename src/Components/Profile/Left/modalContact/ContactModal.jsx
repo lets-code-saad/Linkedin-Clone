@@ -5,22 +5,27 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import AddIcon from '@mui/icons-material/Add';
 import { useDispatch, useSelector } from "react-redux";
 import "./CSS/ModalContact.css"
-import { setContactModal } from "../../../Store/Slices/modalSlice";
+import { setContactModal, setOpenEditContModal } from "../../../Store/Slices/modalSlice";
 import { Link } from "react-router-dom";
 import { InsertEmoticon } from "@mui/icons-material";
+import EditModalCont from "./editModalCont/EditModalCont";
 
 const ContactModal = () => {
 
-    const { openContactModal } = useSelector((state) => state.modalSlice)
-const dispatch = useDispatch()
+    // CREATING GLOBAL STATE FOR OPENING AND CLOSING THE MODAL
+    const { openContactModal, openEditContModal } = useSelector((state) => state.modalSlice)
+    const dispatch = useDispatch()
+    
+    // CREATING GLOBAL STATE TO MANAGE THE CONTACT INPUTS
+    const { contactProfile, contactEmail, contactWebsite, contactAddress, contactNo } = useSelector((state) => state.contactInfoSlice)
 
     // MANAGING THE MULTIPLE CONTACT DETAILS TO REDUCE THE REPITION OF CODE
     const contacts = [
-        { id: 1, name: "Your Profile", icon:"uil:linkedin", link:"https://saad78"},
-        { id: 2, name: "Website", icon:"tdesign:link", link:"https:www.google.com"},
-        { id: 3, name: "Phone", icon:"line-md:phone-filled", link:"03201839399"},
-        { id: 4, name: "Address", icon:"tdesign:location-filled", link:"Layyah, Punjab Pakistan"},
-        { id: 5, name: "Email", icon:"ic:outline-email", link:"saadabbas594@gmail.com"},
+        { id: 1, name: "Your Profile", icon: "uil:linkedin", link: contactProfile },
+        { id: 2, name: "Website", icon: "tdesign:link", link: contactWebsite },
+        { id: 3, name: "Phone", icon: "line-md:phone-filled", link: contactNo },
+        { id: 4, name: "Address", icon: "tdesign:location-filled", link: contactAddress },
+        { id: 5, name: "Email", icon: "ic:outline-email", link: contactEmail },
     ]
 
     return (
@@ -61,7 +66,7 @@ const dispatch = useDispatch()
                     <Box
                         className="border-0 rounded-pill"
                         sx={{padding: "10px",color:"#666666", ":hover": { backgroundColor: "#EBEBEB", cursor: "pointer" } }}
-                        onClick={() => dispatch(setContactModal(false))}>
+                        onClick={() => dispatch(setOpenEditContModal(true))}>
                             <iconify-icon icon="ic:outline-edit" width="24" height="24"></iconify-icon>
                     </Box>
                 </Box>
@@ -103,6 +108,7 @@ const dispatch = useDispatch()
  
                     
                     </Box>
+            <EditModalCont open={openEditContModal} handleClose={() => dispatch(setOpenEditContModal(true))} />
                 </Box>
                 
         </Modal>

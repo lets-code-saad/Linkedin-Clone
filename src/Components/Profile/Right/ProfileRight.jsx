@@ -1,11 +1,14 @@
 import { Box, Button, Divider, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import "./ProfileRight.css"
+import { useSelector } from 'react-redux'
 
 const ProfileRight = () => {
 
-    // CREATING STATE FOR DYNAMICALLY UPDATING THE LINK
-    const [profileURL, setProfileURL] = useState("www.linkedin.com/in/saad48")
+
+    // STATE FOR DYNAMICALLY UPDATING THE LINK
+    // GETTING THE DYNAMIC CHANGE IN THE PROFILE URL FROM STATE
+    const { contactProfile } = useSelector((state) => state.contactInfoSlice)
 
     return (
         <div className='profilePageRight'>
@@ -27,7 +30,7 @@ const ProfileRight = () => {
                     <Box sx={{ display: "flex", justifyContent: "space-between", marginTop:"15px" }}>
                         <Box>
                             <h6>Public profile & URL</h6>
-                            <Typography sx={{ fontSize: "13px", color: "#666666" }}>{profileURL}</Typography>
+                            <Typography sx={{ fontSize: "13px", color: "#666666" }}>{contactProfile}</Typography>
                         </Box>
                         <Box className="border-0 rounded-pill" sx={{ ":hover": { backgroundColor: "#EBEBEB", cursor: "pointer" }, padding: "10px" }} >
                             <iconify-icon icon="ic:outline-edit" width="24" height="24"></iconify-icon>
