@@ -13,16 +13,16 @@ import Profile from './Components/Profile/Profile.jsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-   <Provider store={Store}>
-         <BrowserRouter>
-    <Routes>
-    <Route path="/" element={<App/>}/>
-    <Route path="/signin" element={<Signin/>}/>
-    <Route path="/signup" element={<Signup/>}/>
-    <Route path="/home" element={<Home/>}/>
-    <Route path="/profile" element={<Profile/>}/>
-    
-    </Routes>
+    <Provider store={Store}>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Signup />} />
+                <Route path="/signin" element={<Signin />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/profile" element={<Profile />} />
+
+            </Routes>
         </BrowserRouter>
     </Provider>
 );
