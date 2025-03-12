@@ -17,3 +17,30 @@
     object-fit: cover;
     /* Ensures the image covers the full area */
 }
+
+
+/* MEDIA QUERY */
+@media (max-width: 600px) {
+
+    /* small screen */
+.educationDetail{
+    display: none !important;
+}
+.dropDownMenu{
+    display: block!important;
+}
+.hidingBtns{
+    display:none!important;
+}
+}
+
+@media (min-width: 601px) {
+
+    /* large screen */
+.dropDownMenu{
+    display: none !important;
+}
+.moreOptionsBtn{
+    display: none !important;
+}
+}

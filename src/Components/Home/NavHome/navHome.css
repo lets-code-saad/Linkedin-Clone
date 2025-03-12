@@ -1,0 +1,37 @@
+@media (max-width: 600px) {
+   /* small screen */
+    .navIcons {
+        display: flex!important;
+        position: fixed;
+        bottom: 0;
+        background: white;
+        /* hide on small screen */
+    }
+
+.navBar{
+    display: none;
+}
+.smScreenNav{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+    }
+
+@media (min-width: 601px) {
+    /* large screen */
+    .navIcons {
+        display: flex!important;
+        /* show on larger screens */
+    }
+.profileImg{
+    display:none;
+}
+    .smScreenNav{
+        display:none;
+    }
+    .navBar {
+        display: flex;
+    }
+}

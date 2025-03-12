@@ -1,6 +1,5 @@
-import { Box, Divider, IconButton, InputBase, Paper } from '@mui/material'
+import { Box, Divider, IconButton, InputAdornment, InputBase, OutlinedInput, Paper, TextField } from '@mui/material'
 import React from 'react'
-import SearchIcon from '@mui/icons-material/Search';
 import HomeIcon from '@mui/icons-material/Home';
 import PeopleIcon from '@mui/icons-material/People';
 import WorkIcon from '@mui/icons-material/Work';
@@ -9,37 +8,40 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import AppsIcon from '@mui/icons-material/Apps';
 import CrisisAlertIcon from '@mui/icons-material/CrisisAlert';
 import { Link } from 'react-router-dom';
+import "./navHome.css"
+import SearchIcon from '@mui/icons-material/Search';
 
 const NavHome = () => {
   return (
     <div className='bg-white'>
     <div className='container'>
       {/* LOGO AND SEARCH BAR */}
-      <nav className='d-flex align-items-center justify-content-between my-2'>
+      <nav className='navBar align-items-center justify-content-between my-2'>
         <Box className="d-flex gap-2">
-          <Box>
+            <Box className="logoImg">
             <img width={40} src="/imgs/Logo/linkedin.png" alt="" />
-          </Box>
-          <Box>
-            <Paper
-              component="form"
-              sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 300, backgroundColor: "#EEF3F9" }}
-            >
-              <IconButton type="button" sx={{ p: '5px' }} aria-label="search">
-                <SearchIcon />
-              </IconButton>
-              <InputBase
-                placeholder="Search"
-                sx={{ fontWeight: "500", color: "black" }}
-                inputProps={{ 'aria-label': 'search google maps' }}
+            </Box>
+
+          <Box sx={{width:"100%"}}>
+              <OutlinedInput
+                className='searchInput'
+                placeholder='Search'
+                fullWidth
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <SearchIcon />
+                    </InputAdornment>
+                  ),
+                }}
+                size='small'
               />
-            </Paper>
 
           </Box>
         </Box>
 
         {/* ICONS */}
-        <Box sx={{ color: "#666666" }} className="d-flex align-items-center gap-3">
+        <Box sx={{ color: "#666666" }} className="navIcons align-items-center gap-3">
             <Link to="/home" className='text-decoration-none text-black'>
             <Box sx={{ cursor: "pointer", ":hover": { color: "#191919!important", animation: "color 990ms ease" }, padding: "6px" }} className="d-flex flex-column align-items-center text-center">
             <HomeIcon sx={{ fontSize: "25px" }} />
@@ -84,9 +86,40 @@ const NavHome = () => {
             <small className='d-flex align-items-center'>Adertise</small>
           </Box>
 
-        </Box>
+          </Box>
 
-      </nav>
+        </nav>
+
+        {/* SMALL SCREEN NAV-BAR */}
+        
+        <nav className='smScreenNav'>
+          {/* PROFILE IMAGE FOR SMALL SCREEN */}
+          <Box className="logoProfileImg">
+            <img width={50} src="/imgs/User/Profile picture.jpg" alt="" />
+          </Box>
+          <Box sx={{ width: "100%" }}>
+            <OutlinedInput
+              className='searchInput'
+              placeholder='Search'
+              fullWidth
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+              }}
+              size='small'
+              />
+
+          </Box>
+              {/* MESSAGE ICON FOR SMALL SCREEN */}
+          <Link className='text-decoration-none text-black'>
+            <Box sx={{ cursor: "pointer", ":hover": { color: "#191919!important", animation: "color 990ms ease" }, padding: "6px" }} className="textIcon align-items-center text-center">
+              <iconify-icon icon="mdi:chat-processing" style={{ color: "#191919!important" }} width="28" height="28"></iconify-icon>
+            </Box>
+          </Link>
+        </nav>
     </div>
     </div>
   )
