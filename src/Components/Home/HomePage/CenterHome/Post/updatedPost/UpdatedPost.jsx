@@ -8,6 +8,7 @@ import Comment from '../Comment/Comment';
 import Like from '../Like/Like';
 import { deletePost } from '../../../../../Store/Slices/selectedContent';
 import { Link } from 'react-router-dom';
+import "./updatedPost.css"
 
 
 const UpdatedPost = ({ post }) => {
@@ -151,7 +152,7 @@ const UpdatedPost = ({ post }) => {
                         <iconify-icon icon="lineicons:comment-1-text" width="20" height="20"></iconify-icon>
                         <Typography sx={{ color: "#666666" }} component="span">Comment</Typography>
                     </Box>
-                    <Box onClick={incrementInPost} sx={{ padding: "10px", ":hover": { cursor: "pointer", backgroundColor: "#EBEBEB" } }} className="d-flex align-items-center gap-1 fw-medium">
+                    <Box onClick={incrementInPost} sx={{ padding: "10px", ":hover": { cursor: "pointer", backgroundColor: "#EBEBEB" } }} className="repostBtn gap-1 fw-medium">
                         <iconify-icon icon="mdi:repost" width="20" height="20"></iconify-icon>
                         <Typography sx={{ color: "#666666" }} component="span">Repost</Typography>
                     </Box>

@@ -1,0 +1,15 @@
+@media (max-width: 600px) {
+    .repostBtn {
+        display: none !important;
+    }
+
+    /* hide on small screen */
+}
+
+@media (min-width: 601px) {
+    .repostBtn {
+        display: flex !important;
+        align-items: center;
+        /* show on larger screens */
+    }
+}

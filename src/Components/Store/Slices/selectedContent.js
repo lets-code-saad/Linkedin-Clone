@@ -23,7 +23,6 @@ const selectedContent = createSlice({
         addPosts: (state, action) => {
             if (state.postContent.trim() || state.selectedImg) {
                 state.posts.unshift({
-                    id: nanoid(),
                     content: state.postContent,
                     image: state.selectedImg,
                     date: Date.now()
@@ -34,7 +33,6 @@ const selectedContent = createSlice({
         },
         deletePost: (state, action) => {
             state.posts = state.posts.filter((post)=>post.id !== action.payload);
-            console.log(action, "action")
         }
     }
 })

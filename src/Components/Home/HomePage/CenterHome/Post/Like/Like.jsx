@@ -41,9 +41,9 @@ const Like = ({ postId, selectedReactions, setSelectedReactions, hovered, setHov
                                 }));
                                 setHoveredPost(null); // Hide reactions after selection
                             }}
-                            style={{ color: reaction.color, backgroundColor: reaction.bg }}
+                            style={{ color: reaction?.color, backgroundColor: reaction?.bg }}
                             className="reaction_icons border-0 rounded-pill p-1"
-                            icon={reaction.icon}
+                            icon={reaction?.icon}
                             width="35"
                             height="35"
                         />

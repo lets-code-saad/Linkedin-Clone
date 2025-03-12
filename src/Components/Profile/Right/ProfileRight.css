@@ -1,13 +1,13 @@
 @media (max-width: 600px) {
     .profilePageRight {
         display: none;
-        /* Show element */
+        /* hide on small screen */
     }
 }
 
 @media (min-width: 601px) {
     .profilePageRight {
         display: block;
-        /* Hide on larger screens */
+        /* show on larger screens */
     }
 }
